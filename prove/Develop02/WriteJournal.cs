@@ -14,6 +14,7 @@ public class WriteJournal
     {
         Prompt RanPrompt = new Prompt();
         RanPrompt.DisplayRandomPrompt();
+        Console.Write(_date);
     }
 
 }
