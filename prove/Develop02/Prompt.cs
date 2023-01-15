@@ -13,11 +13,12 @@ public class Prompt
         _prompt.Add("If I had one thing I could do over today, what would it be?");
     }
 
-    public void DisplayRandomPrompt()
+    public string DisplayRandomPrompt()
     {
         int len = _prompt.Count();
         int ran = new Random().Next(0,len);
         Console.WriteLine($"{_prompt[ran]}");
+        return _prompt[ran];
     }
 
 }
