@@ -35,12 +35,12 @@ class Program
 
             else if (i == "3")
             {
-                _myJournal.WriteToCSV();
+                _myJournal.ReadFromCSV();
             }
 
             else if (i == "4")
             {
-                _myJournal.ReadFromCSV();
+                _myJournal.WriteToCSV();
             }
 
             else 
