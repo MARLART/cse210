@@ -1,5 +1,9 @@
+using System.IO;
+using System.Text;
+
 public class Entry
 {
+    string filePath = "savedJournal.csv";
     DateTime todayDate = DateTime.Now;
     public string _date;
     public string _entry = "";
@@ -19,6 +23,17 @@ public class Entry
         _fullEntry = "Date: " + _date + " - Prompt: " + prom  +"\n"+  _entry;
         
         return _fullEntry;
+       
+    }
+
+    public void SaveFullEntry()
+    {
+        StringBuilder builder = new StringBuilder();
+
+        string text1 = _fullEntry;
+
+        builder.AppendLine(string.Format("{0}", text1));
+        File.WriteAllText(filePath, builder.ToString());
     }
 
     public void PrintEntry()

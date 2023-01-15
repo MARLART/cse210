@@ -18,7 +18,9 @@ public class Journal
 
     public void DisplayEntries()
     {
-       int _num = _allEntries.Count();
+        ReadFromCSV();
+        
+        int _num = _allEntries.Count();
 
         foreach (Entry entry in _allEntries)
         {
@@ -30,14 +32,18 @@ public class Journal
 
     public void WriteToCSV()
     {
-        StringBuilder builder = new StringBuilder();
+        //StringBuilder builder = new StringBuilder();
 
-        string text1 = "Text1";
+        foreach (Entry entry in _allEntries)
+        {
+           entry.SaveFullEntry();
+           //builder.AppendLine(string.Format("{0}", text1));
+           //File.WriteAllText(filePath, builder.ToString());
+        }
+        
         //string text2 = "Text2";
 
-        builder.AppendLine(string.Format("{0}", text1));
-
-        File.WriteAllText(filePath, builder.ToString());
+        
     }
 
     public void ReadFromCSV()
@@ -49,8 +55,7 @@ public class Journal
             var line = streamReader.ReadLine();
             var values = line.Split('|');
 
-            Console.WriteLine("{0}|{1}", values[0], values[1]);
-            Console.WriteLine("did read from csv work?");
+            Console.WriteLine("{0}", values[0]);
         }
     }
 }
