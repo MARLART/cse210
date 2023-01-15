@@ -1,9 +1,12 @@
 using System;
+using System.IO;
+using System.Text;
 
 class Program
 {
     static void Main(string[] args)
     {
+        
         Journal _myJournal = new Journal();
         string i = "0";
 
@@ -22,10 +25,7 @@ class Program
 
             if (i == "1")
             {    
-                _myJournal.AddEntry();
-                Console.WriteLine($"Did it return? ");
-                _myJournal.DisplayEntries();
- 
+                _myJournal.AddEntry(); 
             }
 
             else if (i == "2")
@@ -35,12 +35,12 @@ class Program
 
             else if (i == "3")
             {
-                Console.WriteLine("option 3");
+                _myJournal.WriteToCSV();
             }
 
             else if (i == "4")
             {
-                Console.WriteLine("option 4");
+                _myJournal.ReadFromCSV();
             }
 
             else 
