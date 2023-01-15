@@ -1,6 +1,5 @@
 public class Entry
 {
-    public string _randomPrompt = "";  
     DateTime todayDate = DateTime.Now;
     public string _date;
     public string _entry = "";
@@ -11,13 +10,19 @@ public class Entry
         _date = todayDate.ToString();
     }
 
-    public void Display()
+    public string Display()
     {
         Prompt RanPrompt = new Prompt();
         string prom = RanPrompt.DisplayRandomPrompt();
-        Console.WriteLine(_date);
+        Console.Write("> ");
         _entry = Console.ReadLine();
-        _fullEntry = prom +" "+ _date +" "+ _entry;
+        _fullEntry = "Date: " + _date + " - Prompt: " + prom  +"\n"+  _entry;
+        
+        return _fullEntry;
+    }
+
+    public void PrintEntry()
+    {
         Console.WriteLine(_fullEntry);
     }
 
