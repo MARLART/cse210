@@ -1,11 +1,11 @@
-public class WriteJournal
+public class Entry
 {
     public string _randomPrompt = "";  
     DateTime todayDate = DateTime.Now;
     public string _date;
     public string _entry = "";
 
-    public WriteJournal()
+    public Entry()
     {
         _date = todayDate.ToString();
     }
@@ -15,6 +15,7 @@ public class WriteJournal
         Prompt RanPrompt = new Prompt();
         RanPrompt.DisplayRandomPrompt();
         Console.Write(_date);
+        _entry = Console.ReadLine();
     }
 
 }

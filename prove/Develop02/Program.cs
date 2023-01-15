@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Develop02 World!");
-        WriteJournal Write1 = new WriteJournal();
+        Entry Write1 = new Entry();
         Write1.Display();
         
         
