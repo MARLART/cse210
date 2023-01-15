@@ -4,20 +4,46 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<string> uppers = new List<string>();
-        uppers.Add("A");
-        uppers.Add("B");
+        string i = "0";
 
-        List<string> lowers = new List<string>();
-        lowers.Add("a");
-        lowers.Add("b");
-
-
-
-        foreach (string combo in lowers)
+        while (i != "5")
         {
-            Console.WriteLine(combo);
+            Console.WriteLine("Welcome to the Journal Program!");
+            Console.WriteLine("Please select one of the following choices.");
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Load");
+            Console.WriteLine("4. Save");
+            Console.WriteLine("5. Quit");
+            Console.Write("What would you like to do? ");
+            i = Console.ReadLine();
+
+            if (i == "1")
+            {
+                Console.WriteLine("option 1");
+            }
+
+            else if (i == "2")
+            {
+                Console.WriteLine("option 2");
+            }
+
+            else if (i == "3")
+            {
+                Console.WriteLine("option 3");
+            }
+
+            else if (i == "4")
+            {
+                Console.WriteLine("option 4");
+            }
+
+            else 
+            {
+                Console.WriteLine("quit");
+            }
         }
+
 
 
     }
