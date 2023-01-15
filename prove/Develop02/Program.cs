@@ -4,10 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
+        Journal _myJournal = new Journal();
         string i = "0";
 
         while (i != "5")
         {
+
             Console.WriteLine("Welcome to the Journal Program!");
             Console.WriteLine("Please select one of the following choices.");
             Console.WriteLine("1. Write");
@@ -19,15 +21,16 @@ class Program
             i = Console.ReadLine();
 
             if (i == "1")
-            {
-                Journal _myJournal = new Journal();
+            {    
                 _myJournal.AddEntry();
+                Console.WriteLine($"Did it return? ");
                 _myJournal.DisplayEntries();
+ 
             }
 
             else if (i == "2")
             {
-                Console.WriteLine("option 2");
+               _myJournal.DisplayEntries();
             }
 
             else if (i == "3")
