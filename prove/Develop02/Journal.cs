@@ -37,13 +37,9 @@ public class Journal
         foreach (Entry entry in _allEntries)
         {
            entry.SaveFullEntry();
-           //builder.AppendLine(string.Format("{0}", text1));
-           //File.WriteAllText(filePath, builder.ToString());
         }
         
-        //string text2 = "Text2";
-
-        
+       
     }
 
     public void ReadFromCSV()
