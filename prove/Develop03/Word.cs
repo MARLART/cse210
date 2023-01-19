@@ -1,9 +1,9 @@
-class World
+class Word
 {
     string _individualWords = "";
     string _text = "";
 
-    public World(string text)
+    public Word(string text)
     {
 
     }

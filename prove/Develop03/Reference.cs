@@ -21,17 +21,17 @@ class Reference
         _endVerse = endVerse;
     }
 
-    private string Show()
+    public void Show()
     {
         if(!(_endVerse == ""))
         {
-            _reference = $"{_book} {_chapter}: {_verse} - {_endVerse}";
+            _reference = $"{_book} {_chapter}:{_verse}-{_endVerse} ";
         }
         else
         {
-            _reference = $"{_book} {_chapter}: {_verse}";
+            _reference = $"{_book} {_chapter}:{_verse} ";
         }
 
-        return _reference;
+        Console.Write(_reference);
     }
 }
