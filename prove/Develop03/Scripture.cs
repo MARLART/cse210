@@ -4,9 +4,11 @@ class Scripture
     private List<Word> _words = new List<Word>();
     private string _text = "";
 
-    public Scripture(string book, string chapter, string startVerse, string endVerse,string text)
+    public Scripture(string text)
     {
-    
+        _text = text;
+        //Word _text = new Word(text);
+
     }
 
     private void HideWords()
@@ -14,9 +16,9 @@ class Scripture
 
     }
 
-    private void GetRenderedText()
+    public void GetRenderedText()
     {
-
+        Console.WriteLine(_text);
     } 
 
     private void IsCompletelyHidden()

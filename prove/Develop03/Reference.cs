@@ -6,13 +6,6 @@ class Reference
     string _endVerse = "";
     string _reference = "";
 
-    public Reference(string book, string chapter, string verse)
-    {
-        _book = book;
-        _chapter = chapter;
-        _verse = verse;
-    }
-
     public Reference(string book, string chapter, string verse, string endVerse)
     {
         _book = book;
@@ -20,6 +13,8 @@ class Reference
         _verse = verse;
         _endVerse = endVerse;
     }
+
+    
 
     public void Show()
     {
@@ -32,6 +27,7 @@ class Reference
             _reference = $"{_book} {_chapter}:{_verse} ";
         }
 
-        Console.Write(_reference);
+        Console.WriteLine(_reference);
     }
+    
 }

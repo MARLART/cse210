@@ -4,16 +4,18 @@ class Program
 {
     static void Main(string[] args)
     {
+        string _book, _chapter, _verse;
+        string _endVerse = "";
         //gather the details of the scripture to be memorised 
         //begin with the reference
         Console.WriteLine("Scripture Memoriser");
         Console.WriteLine("Lets start with the scripture reference.");
         Console.Write("Book: ");
-        string _book = Console.ReadLine();
+        _book = Console.ReadLine();
         Console.Write("Chapter: ");
-        string _chapter = Console.ReadLine();
+        _chapter = Console.ReadLine();
         Console.Write("Start verse: ");
-        string _verse = Console.ReadLine();
+        _verse = Console.ReadLine();
 
         //check if there is more than 1 verse
         Console.Write("Is there more than one verse? (Y/N): ");
@@ -23,20 +25,23 @@ class Program
         if (_answer == "Y" || _answer == "y")
         {
             Console.Write("End verse: ");
-            string _endVerse = Console.ReadLine();
-
-            // create a reference object to hold the reference
-            Reference _ref = new Reference(_book, _chapter, _verse, _endVerse);
-            _ref.Show();
+             _endVerse = Console.ReadLine();             
         }
 
-        //if there is only 1 verse
-        else
-        {
-            // create a reference object to hold the reference
-            Reference _ref = new Reference(_book, _chapter, _verse);
-            _ref.Show();
-        }
+        //get the text of the Scripture and send them to Scrpture
+        Console.Write("Please type the scripture: ");
+        string _text = Console.ReadLine();
+
+        //create reference and scripture
+        Reference _ref = new Reference(_book, _chapter, _verse, _endVerse);
+        Scripture _newScripture = new Scripture(_text);
+
+        //get reference and scripture to show on the screen
+        // This will clear the console
+        Console.Clear();
+        _ref.Show();
+        _newScripture.GetRenderedText();
+        Console.WriteLine("");
 
         
     }
