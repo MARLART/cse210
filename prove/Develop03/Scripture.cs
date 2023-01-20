@@ -2,12 +2,12 @@ class Scripture
 {
     private string _reference = "";
     private List<Word> _words = new List<Word>();
-    private string _text = "";
+    //private string _text = "";
 
     public Scripture(string text)
     {
-        _text = text;
-        //Word _text = new Word(text);
+        //_text = text;
+        Word _text = new Word(text);
 
     }
 
@@ -18,7 +18,7 @@ class Scripture
 
     public void GetRenderedText()
     {
-        Console.WriteLine(_text);
+        _text.GetRenderedText();
     } 
 
     private void IsCompletelyHidden()

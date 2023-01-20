@@ -4,15 +4,14 @@ class Program
 {
     static void Main(string[] args)
     {
-      // This will start by displaying "AAA" and waiting for the user to press the enter key
-        Console.WriteLine("AAA");
-        Console.ReadLine();
+      string _stringWords = "I am a good dog.";
+      
 
-        // This will clear the console
-        Console.Clear();
+      foreach (string item in _stringWords.Split())
+      {
+        Console.WriteLine(item);
+      }
 
-        // This will show "BBB" in the console where "AAA" used to be
-        Console.WriteLine("BBB"); 
 
 
 

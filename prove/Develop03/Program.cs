@@ -6,6 +6,7 @@ class Program
     {
         string _book, _chapter, _verse;
         string _endVerse = "";
+
         //gather the details of the scripture to be memorised 
         //begin with the reference
         Console.WriteLine("Scripture Memoriser");
@@ -25,7 +26,7 @@ class Program
         if (_answer == "Y" || _answer == "y")
         {
             Console.Write("End verse: ");
-             _endVerse = Console.ReadLine();             
+            _endVerse = Console.ReadLine();             
         }
 
         //get the text of the Scripture and send them to Scrpture

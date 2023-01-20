@@ -1,11 +1,17 @@
 class Word
 {
-    string _individualWords = "";
+    List<string> _individualWords = new List<string>; 
     string _text = "";
 
     public Word(string text)
     {
+        _text = text;
 
+    //.split tells it to seperate words into string
+        foreach (string word  in _text.Split())
+        {
+            _individualWords.Add(word);
+        }
     }
 
     private void Hide()
@@ -23,8 +29,8 @@ class Word
 
     }
 
-    private void GetRenderedText()
+    public void GetRenderedText()
     {
-        
+        Console.WriteLine(_individualWords);
     }
 }
