@@ -1,10 +1,6 @@
 class Reference
 {
-    string _book = "";
-    string _chapter = "";
-    string _verse = "";
-    string _endVerse = "";
-    string _reference = "";
+    private string _book, _chapter, _verse, _endVerse, _ref;
 
     public Reference(string book, string chapter, string verse, string endVerse)
     {
@@ -14,20 +10,16 @@ class Reference
         _endVerse = endVerse;
     }
 
-    
-
-    public void Show()
+    public string toString()
     {
-        if(!(_endVerse == ""))
+        if(_endVerse != "")
         {
-            _reference = $"{_book} {_chapter}:{_verse}-{_endVerse} ";
+            _ref = string.Format("{0} {1}:{2}-{3}", _book, _chapter, _verse, _endVerse);
         }
-        else
-        {
-            _reference = $"{_book} {_chapter}:{_verse} ";
+        else{
+            _ref = string.Format("{0} {1}:{2}{3}", _book, _chapter, _verse, _endVerse);
         }
 
-        Console.WriteLine(_reference);
-    }
-    
+        return _ref;
+    }       
 }

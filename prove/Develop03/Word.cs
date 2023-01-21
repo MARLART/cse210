@@ -1,36 +1,69 @@
 class Word
 {
-    List<string> _individualWords = new List<string>; 
-    string _text = "";
+    private Scripture _scripture; 
+    private List<string> _scriptureWords;
+    private int _totalWordsHidden = 0;
 
-    public Word(string text)
+
+    public Word(Scripture scripture)
     {
-        _text = text;
+        _scripture = scripture;
+        _scriptureWords = new List<string>();
+        GetTextToList();
+    }
 
-    //.split tells it to seperate words into string
-        foreach (string word  in _text.Split())
+    private void GetTextToList()
+    {
+        _scriptureWords = _scripture.toString().Split(' ').ToList();
+    }
+
+    public void HideWords()
+    {
+        int _numWordsToHide = 3;
+        int _wordsHidden = 0;
+
+
+       do
+       {
+        int ranIndex = new Random().Next(0, _scriptureWords.Count()); 
+        if(_scriptureWords[ranIndex].Contains('_') == false)
         {
-            _individualWords.Add(word);
+            _scriptureWords[ranIndex]  = new string('_', _scriptureWords[ranIndex].Length);
+            _wordsHidden++;
+            _totalWordsHidden++; 
+
+            if(_totalWordsHidden < (28) && _totalWordsHidden >= (24))
+            {
+                _wordsHidden = 3;
+            }
+
         }
-    }
 
-    private void Hide()
-    {
 
-    }
-
-    private void Show()
-    {
+        
+       } while (_wordsHidden != _numWordsToHide);
 
     }
 
-    private void IsHidden()
+    public string toString()
     {
-
+        return string.Join(" ", _scriptureWords);
     }
 
-    public void GetRenderedText()
+    public bool hasWordsLeft()
     {
-        Console.WriteLine(_individualWords);
+        bool _fullWords = false;
+      
+
+        foreach(string word in _scriptureWords)
+        {
+            if(word.Contains("_") == false)
+            {
+                _fullWords = true;
+                break;
+            }
+            
+        }
+        return _fullWords;
     }
 }

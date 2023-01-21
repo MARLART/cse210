@@ -4,46 +4,26 @@ class Program
 {
     static void Main(string[] args)
     {
-        string _book, _chapter, _verse;
-        string _endVerse = "";
+        Reference _scriptureRef = new Reference("Proverbs", "3", "5", "6");
+        Scripture _scripture = new Scripture(_scriptureRef, "Trust in the Lord with all thine heart and lean not unto thine own understanding. In all they ways acknownledge him, and he shall direct thy paths.");
+        Word _words = new Word(_scripture);
 
-        //gather the details of the scripture to be memorised 
-        //begin with the reference
-        Console.WriteLine("Scripture Memoriser");
-        Console.WriteLine("Lets start with the scripture reference.");
-        Console.Write("Book: ");
-        _book = Console.ReadLine();
-        Console.Write("Chapter: ");
-        _chapter = Console.ReadLine();
-        Console.Write("Start verse: ");
-        _verse = Console.ReadLine();
+        string _userInput = "";
 
-        //check if there is more than 1 verse
-        Console.Write("Is there more than one verse? (Y/N): ");
-        string _answer = Console.ReadLine();
-
-        //if there is more than one verse ask for the last verse
-        if (_answer == "Y" || _answer == "y")
+        while(_userInput != "quit" && _words.hasWordsLeft() == true)
         {
-            Console.Write("End verse: ");
-            _endVerse = Console.ReadLine();             
+            Console.Clear();
+            Console.WriteLine(string.Format("{0} {1}", _scriptureRef.toString(), _words.toString()));
+            Console.WriteLine();
+            Console.WriteLine("Press enter to remove 3 words or quit to end.");
+            Console.WriteLine();
+            _userInput = Console.ReadLine();           
+            _words.HideWords();
         }
-
-        //get the text of the Scripture and send them to Scrpture
-        Console.Write("Please type the scripture: ");
-        string _text = Console.ReadLine();
-
-        //create reference and scripture
-        Reference _ref = new Reference(_book, _chapter, _verse, _endVerse);
-        Scripture _newScripture = new Scripture(_text);
-
-        //get reference and scripture to show on the screen
-        // This will clear the console
         Console.Clear();
-        _ref.Show();
-        _newScripture.GetRenderedText();
-        Console.WriteLine("");
-
-        
+        Console.WriteLine(string.Format("{0} {1}", _scriptureRef.toString(), _words.toString()));
+        Console.WriteLine();
+        Console.WriteLine("Good Bye");
     }
+        
 }

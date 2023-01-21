@@ -1,28 +1,19 @@
 class Scripture
 {
-    private string _reference = "";
-    private List<Word> _words = new List<Word>();
+    private Reference _reference;
+    private string _text;
     //private string _text = "";
 
-    public Scripture(string text)
+    public Scripture(Reference scriptureRef, string scriptureText)
     {
-        //_text = text;
-        Word _text = new Word(text);
-
+        _reference  = scriptureRef;
+        _text       = scriptureText;
     }
 
-    private void HideWords()
+    public string toString()
     {
-
+        return string.Format("{0}", _text);
     }
 
-    public void GetRenderedText()
-    {
-        _text.GetRenderedText();
-    } 
 
-    private void IsCompletelyHidden()
-    {
-        
-    }
 }
