@@ -32,7 +32,7 @@ class Word
             _wordsHidden++;
             _totalWordsHidden++; 
 
-            if(_totalWordsHidden < (28) && _totalWordsHidden >= (24))
+            if(_totalWordsHidden < (_scriptureWords.Count()+1) && _totalWordsHidden >= (_scriptureWords.Count()-_numWordsToHide))
             {
                 _wordsHidden = 3;
             }

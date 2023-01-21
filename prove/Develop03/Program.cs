@@ -15,7 +15,7 @@ class Program
             Console.Clear();
             Console.WriteLine(string.Format("{0} {1}", _scriptureRef.toString(), _words.toString()));
             Console.WriteLine();
-            Console.WriteLine("Press enter to remove 3 words or quit to end.");
+            Console.WriteLine("Press enter to remove some words or quit to end.");
             Console.WriteLine();
             _userInput = Console.ReadLine();           
             _words.HideWords();
