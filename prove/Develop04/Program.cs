@@ -17,7 +17,7 @@ class Program
             //option 1 breathing
             if (_menuOption == "1")
             {
-                Console.WriteLine("I am breathing");
+                Breathing breathing1 = new Breathing();
             }
             else if (_menuOption == "2")
             {
