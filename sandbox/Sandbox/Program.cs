@@ -4,15 +4,28 @@ class Program
 {
     static void Main(string[] args)
     {
-      string _stringWords = "I am a good dog.";
-      
+      DateTime startTime = DateTime.Now;
+      DateTime futureTime = startTime.AddSeconds(10000);
 
-      foreach (string item in _stringWords.Split())
+      Console.Clear();
+
+      Console.WriteLine("Start Break");
+
+      Thread.Sleep(2000);
+
+      Console.WriteLine("End Break");
+
+      DateTime currentTime = DateTime.Now;
+      if (currentTime < futureTime)
       {
-        Console.WriteLine(item);
+          Console.WriteLine("We have not arrived at our future time yet...");
       }
 
+      Console.WriteLine("after add seconds");
 
+      Thread.Sleep(2000);
+
+      Console.WriteLine("Ended");
 
 
     }

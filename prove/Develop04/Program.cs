@@ -5,9 +5,11 @@ class Program
     static void Main(string[] args)
     {
         string _menuOption = "0";
+        
 
         do
         {
+            Console.Clear();
             //Display the menu
             Menu menu1 = new Menu();
 
@@ -18,15 +20,16 @@ class Program
             if (_menuOption == "1")
             {
                 Breathing breathing1 = new Breathing();
+                
             }
             else if (_menuOption == "2")
             {
-                Console.WriteLine("I am reflecting");
+                Reflection reflection = new Reflection();
             }
 
             else if (_menuOption == "3")
             {
-                Console.WriteLine("I am listing");
+                Listing listing = new Listing();
             }
         } while (_menuOption != "4");
 
