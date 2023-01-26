@@ -27,7 +27,6 @@ class Activity
         Console.Write(_durationQuestion);
         _seconds = Console.ReadLine();
         _duration = int.Parse(_seconds);
-        Console.WriteLine(_duration + 10); 
         return _duration;   
     }
 
@@ -41,9 +40,15 @@ class Activity
     protected void DisplayEndMessage(string name)
     {
         _name = name;
+
         _endMessage = $"You have completed another {_duration} seconds of the {_name} activity.";
 
+        Console.WriteLine();
+        Console.WriteLine("Well Done!");
+        Console.WriteLine();
         Console.WriteLine(_endMessage);
+        Console.WriteLine();
+
     }
 
 

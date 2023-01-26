@@ -2,7 +2,9 @@ using System;
 
 class Menu
 {
+    
     private string _menuWelcome ="Welcome to the Mindfulness Program.";
+    
     private string _menu0 = "Menu Options:";
     private string _menu1 = "1. Start breathing activity";
     private string _menu2 = "2. Start reflecting activity";
@@ -16,7 +18,9 @@ class Menu
 
     private void DisplayMenu()
     {
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(_menuWelcome);
+        Console.ForegroundColor = ConsoleColor.Gray;
         Console.WriteLine(_menu0);
         Console.WriteLine(_menu1);
         Console.WriteLine(_menu2);
