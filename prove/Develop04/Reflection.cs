@@ -14,7 +14,6 @@ class Reflection : Activity
 
     public void BreathInOut()
     {
-        GetDuration();
         //TODO TIMER AND ANIMATION
 
         DisplayEndMessage(_rName);
