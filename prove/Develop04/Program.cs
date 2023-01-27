@@ -28,6 +28,7 @@ class Program
             else if (_menuOption == "2")
             {
                 Reflection reflection1 = new Reflection();
+                reflection1.SelectPrompt();
             }
 
             else if (_menuOption == "3")
