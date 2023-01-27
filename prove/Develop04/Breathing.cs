@@ -6,8 +6,8 @@ class Breathing : Activity
     private string _bDescription = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
 
     private int _bDuration, _time, _inOutIntervals, _numIntervals, _timeCount;
-    private int _breathInterval = 2500;
-    private int _countdown = 3;
+    private int _breathInterval = 5000;
+    private int _countdown = 5;
 
     public Breathing() : base()
     {

@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        
+
         string _menuOption = "0";
         Console.Clear();
 
@@ -19,6 +21,7 @@ class Program
             if (_menuOption == "1")
             {
                 Breathing breathing1 = new Breathing();
+                
                 breathing1.BreathInOut();
                 
             }
