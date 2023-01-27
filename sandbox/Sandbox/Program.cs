@@ -4,29 +4,16 @@ class Program
 {
     static void Main(string[] args)
     {
-      DateTime startTime = DateTime.Now;
-      DateTime futureTime = startTime.AddSeconds(10000);
 
-      Console.Clear();
-
-      Console.WriteLine("Start Break");
-
-      Thread.Sleep(2000);
-
-      Console.WriteLine("End Break");
-
-      DateTime currentTime = DateTime.Now;
-      if (currentTime < futureTime)
+      Console.WriteLine("You may begin in: ");
+      for (int i = 5; i >=0; i--)
       {
-          Console.WriteLine("We have not arrived at our future time yet...");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.Write(string. Format (" {0}", i));
+        Console.SetCursorPosition(0, Console.CursorTop);
+        Thread.Sleep(1000);
       }
 
-      Console.WriteLine("after add seconds");
-
-      Thread.Sleep(2000);
-
-      Console.WriteLine("Ended");
-
-
+      Console.ForegroundColor = ConsoleColor.Gray;
     }
 }

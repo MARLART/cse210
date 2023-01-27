@@ -7,8 +7,9 @@ class Reflection : Activity
     private string _rDescription = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life."; 
     private List<string> _prompt = new List<string>();
     private List<string> _questions = new List<string>();
-    private int _lengthPrompt, _lengthQuestion, _rDuration, _time;
+    private int _lengthPrompt, _lengthQuestion, _rDuration, _time, _countdown;
     private long _remainingTime;
+    private string _message;
 
     public Reflection() : base()
     {
@@ -39,21 +40,26 @@ class Reflection : Activity
     public void SelectPrompt()
     {
         _time = _rDuration *1000;
+        _countdown = 5;
+        _message = "You may begin in: ";
+
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
 
         Random random = new Random();
         int i = random.Next(0, _lengthPrompt);
-        Console.WriteLine(_prompt[i]);
+        Console.WriteLine(string.Format("--- {0} ---",_prompt[i]));
         Console.WriteLine();
         Console.WriteLine("Once you have thought of an experience press enter.");
         Console.ReadLine();
 
         long _count = stopwatch.ElapsedMilliseconds;
 
+        displayCountDown(_countdown, _message);
+
         if (_count < _time)
         {
-            _remainingTime  = _time - _count;
+            _remainingTime  = _time - _count;            
 
             SelectQuestion(_remainingTime);
         }
@@ -67,6 +73,8 @@ class Reflection : Activity
     private void SelectQuestion(long remainingTime)
     {
         _remainingTime = remainingTime;
+        _countdown = 5;
+        _message = "";
 
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
@@ -77,9 +85,10 @@ class Reflection : Activity
         {
             Random random = new Random();
             int i = random.Next(0, _lengthQuestion);
-            Console.WriteLine(_questions[i]);
-            Console.WriteLine();
-            Thread.Sleep(5000);
+            Console.WriteLine(string.Format("> {0}", _questions[i]));
+
+            displayCountDown(_countdown, _message);
+            
             _count = stopwatch.ElapsedMilliseconds;
         }
         

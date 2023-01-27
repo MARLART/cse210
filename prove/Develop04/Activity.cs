@@ -75,5 +75,19 @@ class Activity
 
     }
 
+    public void displayCountDown (int numSecondsToRun, string message)
+    {
+        Console.WriteLine(message);
+        for (int i = numSecondsToRun; i >=0; i--)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write(string. Format (" {0}", i));
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Thread.Sleep(1000);
+        }
+
+        Console.ForegroundColor = ConsoleColor.Gray;
+    }
+
 
 }
