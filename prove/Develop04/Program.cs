@@ -34,6 +34,7 @@ class Program
             else if (_menuOption == "3")
             {
                 Listing listing1 = new Listing();
+                listing1.SelectQuestion();
             }
         } while (_menuOption != "4");
 
