@@ -12,7 +12,7 @@ class Program
         {            
             //Display the menu
             Menu menu1 = new Menu();
-
+      
             //Display the menu response
             _menuOption = Console.ReadLine();
 
@@ -24,7 +24,7 @@ class Program
             }
             else if (_menuOption == "2")
             {
-                Console.WriteLine("menu 2");
+                menu1.DisplayGoals(Goals._goalList);
             }
 
             else if (_menuOption == "3")

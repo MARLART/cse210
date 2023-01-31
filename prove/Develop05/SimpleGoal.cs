@@ -8,7 +8,7 @@ class SimpleGoal : Goals
 
     public SimpleGoal(string name, string description, int score) : base (name, description, score)
     {
-        Console.WriteLine("I am a simple Goal");
+        
         
     }
 

@@ -54,7 +54,7 @@ class Menu
         Console.Write("Which type of goal would you like to create? ");
         _choice = Console.ReadLine();
 
-    
+
         Console.Write("What is the name of your goal? ");
         _name = Console.ReadLine();
 
@@ -68,6 +68,7 @@ class Menu
         if (_choice == "1")
         {
             SimpleGoal simple = new SimpleGoal(_name, _description, _iScore);
+            
         }
         else if (_choice == "2")
         {
@@ -78,4 +79,17 @@ class Menu
             ChecklistGoal checklist = new ChecklistGoal(_name, _description, _iScore);
         }
     }
+
+    public void DisplayGoals(List<string> goalList)
+    {
+        int _numGoals = goalList.Count();
+
+        //loop the list of Goals and display them 
+        //TODO add completed string and chklist string
+        for(int i =0; i< _numGoals; i++)
+        {
+            Console.WriteLine(goalList[i]);
+        }
+    }
+
 }
