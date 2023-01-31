@@ -54,6 +54,7 @@ class Menu
         Console.Write("Which type of goal would you like to create? ");
         _choice = Console.ReadLine();
 
+    
         Console.Write("What is the name of your goal? ");
         _name = Console.ReadLine();
 
@@ -70,11 +71,11 @@ class Menu
         }
         else if (_choice == "2")
         {
-            Console.Write("Eternal Goal ");
+            EternalGoal eternal = new EternalGoal(_name, _description, _iScore);
         }
-        else
+        else if (_choice == "3")
         {
-            Console.Write("Checklist Goal ");
+            ChecklistGoal checklist = new ChecklistGoal(_name, _description, _iScore);
         }
     }
 }
