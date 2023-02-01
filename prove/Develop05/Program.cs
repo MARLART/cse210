@@ -43,6 +43,11 @@ class Program
                 Console.WriteLine("Which Goal did you work on? ");
                 string _choice = Console.ReadLine();
                 int _iChoice = Int32.Parse(_choice);
+                int _score = Goals._scoreList[_iChoice-1];
+                Goals._totalScore += _score;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Well Done!");
+                Console.ForegroundColor = ConsoleColor.Gray;
             }
 
         } while (_menuOption != "6");

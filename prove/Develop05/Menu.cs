@@ -31,7 +31,8 @@ class Menu
     {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(_menuWelcome);
-        //TODO add total score to introduction
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine(string.Format("Total Score: {0}", Goals._totalScore));
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.WriteLine(_menu0);
         Console.WriteLine(_menu1);

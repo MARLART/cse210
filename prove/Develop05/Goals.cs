@@ -4,7 +4,7 @@ using System.IO;
 public abstract class Goals
 {
     protected int _score;
-    public int _totalScore = 0;
+    public static int _totalScore = 0;
     protected string _name, _description, _completeSymbol;
     private bool _isComplete = false;
     public string _goalString;
@@ -17,6 +17,7 @@ public abstract class Goals
         _description = description;
         _score = score;
         GoalToString();
+        ScoreToList(_score);
 
     }
 
@@ -43,6 +44,12 @@ public abstract class Goals
     {
         _goalList.Add(goalString);
         return _goalList;
+    }
+
+    private List<int> ScoreToList(int score)
+    {
+        _scoreList.Add(score);
+        return _scoreList;
     }
 
     
