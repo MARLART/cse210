@@ -39,7 +39,10 @@ class Program
 
             else if (_menuOption == "5")
             {
-                Console.WriteLine("menu 5");
+                menu1.DisplayGoals(Goals._goalList);
+                Console.WriteLine("Which Goal did you work on? ");
+                string _choice = Console.ReadLine();
+                int _iChoice = Int32.Parse(_choice);
             }
 
         } while (_menuOption != "6");

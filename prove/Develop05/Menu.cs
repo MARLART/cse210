@@ -20,6 +20,7 @@ class Menu
     private string _checklist = "3. Checklist Goal";
     private string _choice, _name, _description, _score;
     private int _iScore;
+    public static List<Goals> _goalsList = new List<Goals>();
 
     public Menu()
     {
@@ -69,14 +70,17 @@ class Menu
         {
             SimpleGoal simple = new SimpleGoal(_name, _description, _iScore);
             
+            
         }
         else if (_choice == "2")
         {
             EternalGoal eternal = new EternalGoal(_name, _description, _iScore);
+           
         }
         else if (_choice == "3")
         {
             ChecklistGoal checklist = new ChecklistGoal(_name, _description, _iScore);
+            
         }
     }
 
@@ -88,7 +92,8 @@ class Menu
         //TODO add completed string and chklist string
         for(int i =0; i< _numGoals; i++)
         {
-            Console.WriteLine(goalList[i]);
+            Console.WriteLine(string.Format("{0}. {1}", (i+1),  goalList[i]));
+
         }
     }
 
