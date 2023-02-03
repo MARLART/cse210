@@ -6,9 +6,14 @@ class EternalGoal : Goals
     private int _eScore;
     private bool _eIsComplete = false;
 
-    public EternalGoal(string name, string description, int score) : base (name, description, score)
+    public EternalGoal()
     {
-        Console.WriteLine("I am an eternal Goal");
+
+    }
+
+    public EternalGoal(string name, string description, int score, string type) : base (name, description, score, type)
+    {
+        
         
     }
 
@@ -18,9 +23,12 @@ class EternalGoal : Goals
         return false;
     }
 
-    public override int RecordEvent()
+    public override int RecordEvent(int index)
     {
-        return 57;
+        int _score = Goals._scoreList[index];
+        Goals._totalScore += _score;
+        IsItComplete();
+        return Goals._totalScore;
     }
 
 }

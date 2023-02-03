@@ -6,7 +6,12 @@ class ChecklistGoal : Goals
     private int _cScore;
     private bool _cIsComplete = false;
 
-    public ChecklistGoal(string name, string description, int score) : base (name, description, score)
+    public ChecklistGoal()
+    {
+        
+    }
+
+    public ChecklistGoal(string name, string description, int score, string type) : base (name, description, score, type)
     {
         Console.WriteLine("I am a checklist Goal");
         

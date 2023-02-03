@@ -40,14 +40,7 @@ class Program
             else if (_menuOption == "5")
             {
                 menu1.DisplayGoals(Goals._goalList);
-                Console.WriteLine("Which Goal did you work on? ");
-                string _choice = Console.ReadLine();
-                int _iChoice = Int32.Parse(_choice);
-                int _score = Goals._scoreList[_iChoice-1];
-                Goals._totalScore += _score;
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("Well Done!");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                menu1.MenuEvent();
             }
 
         } while (_menuOption != "6");

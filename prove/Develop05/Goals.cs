@@ -8,14 +8,22 @@ public abstract class Goals
     protected string _name, _description, _completeSymbol;
     private bool _isComplete = false;
     public string _goalString;
+    public static string _goalType;
     public static List<string> _goalList = new List<string>();
     public static List<int> _scoreList = new List<int>();
+    public static List<string> _typeList = new List<string>();
 
-    public Goals(string name, string description, int score)
+    public Goals()
+    {
+
+    }
+
+    public Goals(string name, string description, int score, string type)
     {
         _name = name;
         _description = description;
         _score = score;
+        _goalType = type;
         GoalToString();
         ScoreToList(_score);
 
@@ -23,7 +31,9 @@ public abstract class Goals
 
     public abstract bool IsItComplete();
 
-    public abstract int RecordEvent();
+    public abstract int RecordEvent(int index);
+
+    public abstract string ToCSVRecord();
 
     private string GoalToString()
     {
@@ -52,7 +62,44 @@ public abstract class Goals
         return _scoreList;
     }
 
-    
+    private List<string> TypeToList(string type)
+    {
+        _typeList.Add(type);
+        return _typeList;
+    }
+
+    public void SaveGoals()
+    {
+        if (_goalList.Count() == 0)
+        {
+            Console.WriteLine("There are no goals to save.");
+            return;
+        }
+        //TODO CREATE DISPLAYGETGOAL FILE
+        string _fileToSave = DisplayGetGoalFile();
+        //Load goals first in case the user hasn't loaded them.
+        if (File.Exists(_fileToSave))
+        {
+            //TODO CREATE LOADGOALS
+            LoadGoals();
+        }
+
+        List<string> _saveGoals = new List<string>();
+        //save the points first
+        _saveGoals.Add(_totalScore.ToString());
+
+        //loops through all goals and convert them to s CSV record to be saved.
+        foreach (Goals goal in _goalList)
+        {
+            //TODO CREATE TO CSV METHORD
+            _saveGoals.Add(goal.ToCSVRecord());
+        }
+
+        SaveLoadCSV.SaveToCSV(_saveGoals, _fileToSave);
+
+        Console.WriteLine("Goals saved.");  
+        
+    }
 
 
 }

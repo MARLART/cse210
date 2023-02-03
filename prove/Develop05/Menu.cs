@@ -69,18 +69,17 @@ class Menu
 
         if (_choice == "1")
         {
-            SimpleGoal simple = new SimpleGoal(_name, _description, _iScore);
-            
-            
+            SimpleGoal simple = new SimpleGoal(_name, _description, _iScore, "S");
+                       
         }
         else if (_choice == "2")
         {
-            EternalGoal eternal = new EternalGoal(_name, _description, _iScore);
+            EternalGoal eternal = new EternalGoal(_name, _description, _iScore, "E");
            
         }
         else if (_choice == "3")
         {
-            ChecklistGoal checklist = new ChecklistGoal(_name, _description, _iScore);
+            ChecklistGoal checklist = new ChecklistGoal(_name, _description, _iScore, "C");
             
         }
     }
@@ -96,6 +95,39 @@ class Menu
             Console.WriteLine(string.Format("{0}. {1}", (i+1),  goalList[i]));
 
         }
+    }
+
+    public void MenuEvent()
+    {
+        Console.WriteLine("Which Goal did you work on? ");
+        string _choice = Console.ReadLine();
+        int _iChoice = Int32.Parse(_choice);
+        int _index = _iChoice - 1;
+
+        // us the number of the chice to get the index for hteinformation we need in the different lists
+        string _type = Goals._typeList[_index];
+        
+
+        //Go to method depending on type of goal
+        if (_type == "S")
+        {
+           var sgoal = new SimpleGoal();
+           sgoal.RecordEvent(_index);
+        }
+        else if (_type =="E")
+        {
+            var egoal = new EternalGoal();
+            egoal.RecordEvent(_index);
+        }
+        else
+        {
+            var cgoal = new ChecklistGoal();
+            cgoal.RecordEvent(_index);
+        }
+
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("Well Done!");
+        Console.ForegroundColor = ConsoleColor.Gray;
     }
 
 }
