@@ -25,6 +25,8 @@ class Menu
     public Menu()
     {
         DisplayMenu();
+        
+        
     }
 
     private void DisplayMenu()
@@ -69,33 +71,33 @@ class Menu
 
         if (_choice == "1")
         {
-            SimpleGoal simple = new SimpleGoal(_name, _description, _iScore, "S");
+            SimpleGoal simple = new SimpleGoal(_name, _description, _iScore, "S", 0, 1);
+            DealingWithGoals dealing = new DealingWithGoals();
+            dealing.AddGoalList(simple);
+            dealing.DisplayGoalList();
+            
                        
         }
         else if (_choice == "2")
         {
-            EternalGoal eternal = new EternalGoal(_name, _description, _iScore, "E");
-           
+            //EternalGoal eternal = new EternalGoal(_name, _description, _iScore, "E", 0, 0);
+           Console.Write("eternal goal");
         }
         else if (_choice == "3")
         {
-            ChecklistGoal checklist = new ChecklistGoal(_name, _description, _iScore, "C");
-            
+            Console.Write("How many times to complete your goal? ");
+            string _times = Console.ReadLine();
+            int _iTimes = Int32.Parse(_times);
+
+            Console.Write("What is the bouns score for completing the goal? ");
+            string _bonus = Console.ReadLine();
+            int _iBonus = Int32.Parse(_bonus);
+
+            //ChecklistGoal checklist = new ChecklistGoal(_name, _description, _iScore, "C", _iTimes, _iBonus);
+            Console.Write("checklist goal ");
         }
     }
 
-    public void DisplayGoals(List<string> goalList)
-    {
-        int _numGoals = goalList.Count();
-
-        //loop the list of Goals and display them 
-        //TODO add completed string and chklist string
-        for(int i =0; i< _numGoals; i++)
-        {
-            Console.WriteLine(string.Format("{0}. {1}", (i+1),  goalList[i]));
-
-        }
-    }
 
     public void MenuEvent()
     {
@@ -116,13 +118,15 @@ class Menu
         }
         else if (_type =="E")
         {
-            var egoal = new EternalGoal();
-            egoal.RecordEvent(_index);
+           // var egoal = new EternalGoal();
+            //egoal.RecordEvent(_index);
+            Console.WriteLine("eternal");
         }
         else
         {
-            var cgoal = new ChecklistGoal();
-            cgoal.RecordEvent(_index);
+           // var cgoal = new ChecklistGoal();
+            //cgoal.RecordEvent(_index);
+            Console.WriteLine("checklist ");
         }
 
         Console.ForegroundColor = ConsoleColor.DarkGreen;

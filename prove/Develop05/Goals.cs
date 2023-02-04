@@ -3,54 +3,48 @@ using System.IO;
 
 public abstract class Goals
 {
-    protected int _score;
+    protected int _score, _times, _bonus;
     public static int _totalScore = 0;
     protected string _name, _description, _completeSymbol;
-    private bool _isComplete = false;
     public string _goalString;
     public static string _goalType;
     public static List<string> _goalList = new List<string>();
     public static List<int> _scoreList = new List<int>();
     public static List<string> _typeList = new List<string>();
-
+    public static List<int> _timesList = new List<int>();
+    public static List<int> _bonusList = new List<int>();
+    public static List<bool> _goalCompleteList = new List<bool>();
+    private bool _goalComplete;
     public Goals()
     {
 
     }
 
-    public Goals(string name, string description, int score, string type)
+    public Goals(string name, string description, int score, string type, int times, int bonus)
     {
         _name = name;
         _description = description;
         _score = score;
         _goalType = type;
-        GoalToString();
-        ScoreToList(_score);
+        _times = times;
+        _bonus = bonus;
+        _goalComplete = false;
 
+        ScoreToList(_score);
+        TypeToList(_goalType);
+        TimesToList(_times);
+        BonusToList(_bonus);
+       // CompleteToList(_goalComplete);
     }
 
     public abstract bool IsItComplete();
 
     public abstract int RecordEvent(int index);
 
-    public abstract string ToCSVRecord();
+    //public abstract string ToCSVRecord();
 
-    private string GoalToString()
-    {
-        if (_isComplete == false)
-        {
-            _completeSymbol = "[ ]";
-        }
-        else
-        {
-            _completeSymbol = "[X]";
-        }
-        _goalString = string.Format("{0} Goal: {1} ({2}) Points: {3}.", _completeSymbol,  _name, _description, _score);
-        GoalToList(_goalString); 
-        return _goalString;
-    }
 
-    private List<string> GoalToList(string goalString)
+    protected static List<string> GoalToList(string goalString)
     {
         _goalList.Add(goalString);
         return _goalList;
@@ -68,38 +62,40 @@ public abstract class Goals
         return _typeList;
     }
 
-    public void SaveGoals()
+     private List<int> TimesToList(int times)
     {
-        if (_goalList.Count() == 0)
-        {
-            Console.WriteLine("There are no goals to save.");
-            return;
-        }
-        //TODO CREATE DISPLAYGETGOAL FILE
-        string _fileToSave = DisplayGetGoalFile();
-        //Load goals first in case the user hasn't loaded them.
-        if (File.Exists(_fileToSave))
-        {
-            //TODO CREATE LOADGOALS
-            LoadGoals();
-        }
-
-        List<string> _saveGoals = new List<string>();
-        //save the points first
-        _saveGoals.Add(_totalScore.ToString());
-
-        //loops through all goals and convert them to s CSV record to be saved.
-        foreach (Goals goal in _goalList)
-        {
-            //TODO CREATE TO CSV METHORD
-            _saveGoals.Add(goal.ToCSVRecord());
-        }
-
-        SaveLoadCSV.SaveToCSV(_saveGoals, _fileToSave);
-
-        Console.WriteLine("Goals saved.");  
-        
+        _timesList.Add(times);
+        return _timesList;
     }
+
+    private List<int> BonusToList(int bonus)
+    {
+        _bonusList.Add(bonus);
+        return _bonusList;
+    }
+
+    private List<bool> CompleteToList()
+    {
+        _goalCompleteList.Add(_goalComplete);
+        return _goalCompleteList;
+    }
+
+        public string GetGoalName()
+    {
+        return _name;
+    }
+
+    public string GetGoalDescription()
+    {
+        return _description;
+    }
+
+    public int GetGoalPoints()
+    {
+        return _score;
+    }
+
+    
 
 
 }

@@ -12,6 +12,7 @@ class Program
         {            
             //Display the menu
             Menu menu1 = new Menu();
+            DealingWithGoals deal = new DealingWithGoals();
       
             //Display the menu response
             _menuOption = Console.ReadLine();
@@ -24,7 +25,7 @@ class Program
             }
             else if (_menuOption == "2")
             {
-                menu1.DisplayGoals(Goals._goalList);
+                deal.DisplayGoalList();
             }
 
             else if (_menuOption == "3")
@@ -39,8 +40,9 @@ class Program
 
             else if (_menuOption == "5")
             {
-                menu1.DisplayGoals(Goals._goalList);
-                menu1.MenuEvent();
+                Console.WriteLine("menu 5");
+                //menu1.DisplayGoals(Goals._goalList);
+                //menu1.MenuEvent();
             }
 
         } while (_menuOption != "6");
