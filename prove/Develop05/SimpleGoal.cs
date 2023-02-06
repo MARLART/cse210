@@ -3,39 +3,30 @@ using System.IO;
 
 class SimpleGoal : Goals
 {
-    private bool _isComplete = false;
-
-
-    public SimpleGoal()
-    {
-        
-    }
+    private bool _isComplete;
+    private string _goalType = "Simple Goal";
     
-    public SimpleGoal(string name, string description, int score, string type, int times, int bonus) : base (name, description, score, type, times, bonus)
+    public SimpleGoal(string name, string description, int score, bool isComplete) : base (name, description, score)
     {
-        
+        _isComplete = isComplete;
     }
 
-    public override bool IsItComplete()
+    public override string ToCSVRecord()
     {
+        return string.Format("{0}|{1}|{2}|{3}|{4}", _goalType, GetGoalName(), GetGoalDescription(), GetGoalPoints(), _isComplete);
+    }
+
+    public override void RecordEvent()
+    {
+        Console.WriteLine(string.Format("Congratulations! You hace earned {0}", GetGoalPoints()));
         _isComplete = true;
-        return _isComplete;
-    }
-
-    public override int RecordEvent(int index)
-    {
-        int _score = Goals._scoreList[index];
-        SimpleGoal._goalCompleteList[index] = IsItComplete();
-        Goals._totalScore += _score;
-        return Goals._totalScore;
     }
 
     public override string ToString()
     {
 
-        _goalString = string.Format("Goal: {0} ({1}) Points: {2}.", GetGoalName(), GetGoalDescription(), GetGoalPoints());
-        SimpleGoal.GoalToList(_goalString); 
-        return _goalString;
+        return string.Format("[{0}] {1} ({2})", ((_isComplete == false) ? " " : "X"), GetGoalName(), GetGoalDescription());
+        
     }
 
 
