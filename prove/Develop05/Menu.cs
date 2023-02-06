@@ -21,12 +21,12 @@ class Menu
     private string _choice, _name, _description, _score;
     private int _iScore;
     public static List<Goals> _goalsList = new List<Goals>();
+    DealingWithGoals dealing = new DealingWithGoals();
 
+    private int _total = DealingWithGoals._totalPoints;
     public Menu()
     {
-        DisplayMenu();
-        
-        
+        DisplayMenu();    
     }
 
     private void DisplayMenu()
@@ -34,7 +34,7 @@ class Menu
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(_menuWelcome);
         Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine(string.Format("Total Score: {0}", Goals._totalScore));
+        Console.WriteLine(string.Format("Total Score: {0}", _total));
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.WriteLine(_menu0);
         Console.WriteLine(_menu1);
@@ -69,14 +69,18 @@ class Menu
         _score = Console.ReadLine();
         _iScore = Int32.Parse(_score);
 
+        Goals goal = null;
+
         if (_choice == "1")
         {
-            SimpleGoal simple = new SimpleGoal(_name, _description, _iScore, "S", 0, 1);
-            DealingWithGoals dealing = new DealingWithGoals();
-            dealing.AddGoalList(simple);
-            dealing.DisplayGoalList();
-            
-                       
+            goal = new SimpleGoal(_name, _description, _iScore, false);
+
+            if (goal != null)
+            {
+                dealing.AddGoalList(goal);
+            }
+
+                          
         }
         else if (_choice == "2")
         {
@@ -98,40 +102,9 @@ class Menu
         }
     }
 
-
-    public void MenuEvent()
+    public void MenuDisplayGoals()
     {
-        Console.WriteLine("Which Goal did you work on? ");
-        string _choice = Console.ReadLine();
-        int _iChoice = Int32.Parse(_choice);
-        int _index = _iChoice - 1;
-
-        // us the number of the chice to get the index for hteinformation we need in the different lists
-        string _type = Goals._typeList[_index];
-        
-
-        //Go to method depending on type of goal
-        if (_type == "S")
-        {
-           var sgoal = new SimpleGoal();
-           sgoal.RecordEvent(_index);
-        }
-        else if (_type =="E")
-        {
-           // var egoal = new EternalGoal();
-            //egoal.RecordEvent(_index);
-            Console.WriteLine("eternal");
-        }
-        else
-        {
-           // var cgoal = new ChecklistGoal();
-            //cgoal.RecordEvent(_index);
-            Console.WriteLine("checklist ");
-        }
-
-        Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine("Well Done!");
-        Console.ForegroundColor = ConsoleColor.Gray;
+        dealing.DisplayGoalList();
     }
 
 }

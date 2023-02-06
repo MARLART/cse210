@@ -7,12 +7,13 @@ class Program
     {
         string _menuOption = "0";
         Console.Clear();
+        DealingWithGoals deal = new DealingWithGoals();
 
         do
         {            
             //Display the menu
             Menu menu1 = new Menu();
-            DealingWithGoals deal = new DealingWithGoals();
+            DealingWithGoals dealGoal = new DealingWithGoals();
       
             //Display the menu response
             _menuOption = Console.ReadLine();
@@ -25,7 +26,7 @@ class Program
             }
             else if (_menuOption == "2")
             {
-                deal.DisplayGoalList();
+                menu1.MenuDisplayGoals();
             }
 
             else if (_menuOption == "3")
@@ -40,13 +41,12 @@ class Program
 
             else if (_menuOption == "5")
             {
-                Console.WriteLine("menu 5");
-                //menu1.DisplayGoals(Goals._goalList);
-                //menu1.MenuEvent();
+                deal.RecordingEvent();
             }
 
         } while (_menuOption != "6");
 
         Console.WriteLine("Thank you Good Bye");
     }
+
 }
