@@ -107,4 +107,19 @@ class Menu
         dealing.DisplayGoalList();
     }
 
+    public void MenuSaveGoals()
+    {
+        dealing.SaveGoals();
+    }
+
+    public void MenuLoadGoals()
+    {
+        dealing.LoadGoals();
+    }
+
+    public void MenusRecordGoals()
+    {
+        dealing.RecordingEvent();
+    }
+
 }

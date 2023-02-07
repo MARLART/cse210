@@ -56,7 +56,7 @@ class DealingWithGoals
     {
         if (_goalsList.Count() == 0)
         {
-            Console.WriteLine("There are no golas to save.");
+            Console.WriteLine("There are no goals to save.");
             return;
         }
 

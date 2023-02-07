@@ -31,17 +31,17 @@ class Program
 
             else if (_menuOption == "3")
             {
-                Console.WriteLine("menu 3");
+                menu1.MenuSaveGoals();
             }
 
             else if (_menuOption == "4")
             {
-                Console.WriteLine("menu 4");
+                menu1.MenuLoadGoals();
             }
 
             else if (_menuOption == "5")
             {
-                deal.RecordingEvent();
+                menu1.MenusRecordGoals();
             }
 
         } while (_menuOption != "6");
