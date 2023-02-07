@@ -18,7 +18,7 @@ class SimpleGoal : Goals
 
     public override void RecordEvent()
     {
-        Console.WriteLine(string.Format("Congratulations! You hace earned {0}", GetGoalPoints()));
+        Console.WriteLine(string.Format("Congratulations! You have earned {0}", GetGoalPoints()));
         _isComplete = true;
     }
 
@@ -28,13 +28,5 @@ class SimpleGoal : Goals
         return string.Format("[{0}] {1} ({2})", ((_isComplete == false) ? " " : "X"), GetGoalName(), GetGoalDescription());
         
     }
-
-
-
-
-    //public override string ToCSVRecord()
-   // {
-       // return string.Format("{0}|{1}|{2}|{3}|{4}", _goalType, _name, _description, _score(), IsItComplete() );
-   // }
 
 }

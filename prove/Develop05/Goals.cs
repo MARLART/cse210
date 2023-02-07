@@ -3,10 +3,8 @@ using System.IO;
 
 public abstract class Goals
 {
-    protected int _score, _times, _bonus;
-    protected string _name, _description, _completeSymbol;
-    public string _goalString;
-
+    protected int _score;
+    protected string _name, _description;
 
     public Goals(string name, string description, int score)
     {

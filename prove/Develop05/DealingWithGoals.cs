@@ -8,7 +8,7 @@ class DealingWithGoals
 
     public DealingWithGoals()
     {
-
+        
     }
 
     public void AddGoalList(Goals goal)
@@ -50,6 +50,69 @@ class DealingWithGoals
 
         Console.WriteLine("You now have {0} points", _totalPoints.ToString());
         Console.ForegroundColor = ConsoleColor.Gray;
+    }
+
+    public void SaveGoals()
+    {
+        if (_goalsList.Count() == 0)
+        {
+            Console.WriteLine("There are no golas to save.");
+            return;
+        }
+
+        string _fileToSave = GoalFile();
+
+        List<string> SaveGoalsString = new List<string>();
+
+        SaveGoalsString.Add(_totalPoints.ToString());
+
+        foreach (Goals goal in _goalsList)
+        {
+            SaveGoalsString.Add(goal.ToCSVRecord());
+        }
+
+        SaveLoadCSV.SaveToCSV(SaveGoalsString, _fileToSave);
+
+        Console.WriteLine("Goals saved.");  
+    }
+
+    public int GetTotalPoints()
+    {
+        return _totalPoints;
+    }
+
+    public string GoalFile()
+    {
+        Console.Write("What is the file name for your goals file? ");
+        return Directory.GetCurrentDirectory() + "\\files\\" + Console.ReadLine();
+    }
+
+    public void LoadGoals()
+    {
+        List<string> _fileGoals = new List<string>();
+            //if you don't have the file name you are saking what the file name is
+        _fileGoals = SaveLoadCSV.LoadFromCSV(GoalFile());
+            
+        Goals goal = null;
+        foreach (string _goalInFile in _fileGoals)
+        {
+            //split each line according to the line shape
+            string[] _goalParts = _goalInFile.Split("|");
+            string _goalType = (_goalParts[0]);
+
+            if (_goalType == "Simple Goal")
+            {
+                goal = new SimpleGoal(_goalParts[1], _goalParts[2], int.Parse(_goalParts[3]), bool.Parse(_goalParts[4]));
+            }
+            
+            //make sure the goal exists and the list does not already contain the goal
+            if (goal != null && _goalsList.Contains(goal) == false)
+            {
+                _goalsList.Add(goal);
+            }
+        }
+        Console.WriteLine("Goals Loaded");
+
     }
 
 }
