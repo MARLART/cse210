@@ -22,8 +22,7 @@ class Menu
     private int _iScore;
     public static List<Goals> _goalsList = new List<Goals>();
     DealingWithGoals dealing = new DealingWithGoals();
-
-    private int _total = DealingWithGoals._totalPoints;
+                
     public Menu()
     {
         //DisplayMenu();    
@@ -34,7 +33,7 @@ class Menu
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(_menuWelcome);
         Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine(string.Format("Total Score: {0}", _total));
+        Console.WriteLine(string.Format("Total Score: {0}", dealing.GetTotalPoints()));
         Console.ForegroundColor = ConsoleColor.Gray;
         Console.WriteLine(_menu0);
         Console.WriteLine(_menu1);
@@ -73,19 +72,11 @@ class Menu
 
         if (_choice == "1")
         {
-            goal = new SimpleGoal(_name, _description, _iScore, false);
-
-            if (goal != null)
-            {
-                dealing.AddGoalList(goal);
-            }
-
-                          
+            goal = new SimpleGoal(_name, _description, _iScore, false);                         
         }
         else if (_choice == "2")
         {
-            //EternalGoal eternal = new EternalGoal(_name, _description, _iScore, "E", 0, 0);
-           Console.Write("eternal goal");
+            goal = new EternalGoal(_name, _description, _iScore, false);
         }
         else if (_choice == "3")
         {
@@ -93,13 +84,13 @@ class Menu
             string _times = Console.ReadLine();
             int _iTimes = Int32.Parse(_times);
 
-            Console.Write("What is the bouns score for completing the goal? ");
+            Console.Write("What is the bonus score for completing the goal? ");
             string _bonus = Console.ReadLine();
             int _iBonus = Int32.Parse(_bonus);
 
-            //ChecklistGoal checklist = new ChecklistGoal(_name, _description, _iScore, "C", _iTimes, _iBonus);
-            Console.Write("checklist goal ");
+            goal = new ChecklistGoal(_name, _description, _iScore, false, _iTimes, _iBonus, 0);
         }
+        dealing.AddGoalList(goal);
     }
 
     public void MenuDisplayGoals()

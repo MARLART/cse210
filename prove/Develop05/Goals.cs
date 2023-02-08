@@ -28,7 +28,7 @@ public abstract class Goals
         return _description;
     }
 
-    public int GetGoalPoints()
+    public virtual int GetGoalPoints()
     {
         return _score;
     }

@@ -1,20 +1,24 @@
 using System;
 using System.IO;
-using System.Text.Unicode;
 
-class Program
+class Pets
 {
 
-    static void Main(string[] args)
+    public Pets()
     {
 
+    }
+
+    public void Doggy()
+    {
         Console.WriteLine("^---^");
         Console.WriteLine("|o o| _____\\");
         Console.WriteLine("\\ O  ________");
         Console.WriteLine("       ||  || ");
 
-
-
-
+        Console.WriteLine("Congratulations on your Progress - Doggy is proud of you");
     }
+
+    
+
 }

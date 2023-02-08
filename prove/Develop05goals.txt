@@ -1,2 +1,4 @@
-0
-Simple Goal|doggy|puss|56|False
+220
+Simple Goal|simple|try 1|35|True
+Eternal Goal|eternal|try 2|60|False
+Checklist Goal|checklist|try 3|125|False|3|2|100

@@ -5,6 +5,7 @@ class DealingWithGoals
 {
     private List<Goals> _goalsList = new List<Goals>();
     public static int _totalPoints;
+    Pets pet = new Pets();
 
     public DealingWithGoals()
     {
@@ -50,6 +51,9 @@ class DealingWithGoals
 
         Console.WriteLine("You now have {0} points", _totalPoints.ToString());
         Console.ForegroundColor = ConsoleColor.Gray;
+
+        //praise
+        Congratulations();
     }
 
     public void SaveGoals()
@@ -104,6 +108,23 @@ class DealingWithGoals
             {
                 goal = new SimpleGoal(_goalParts[1], _goalParts[2], int.Parse(_goalParts[3]), bool.Parse(_goalParts[4]));
             }
+
+            else if (_goalType == "Eternal Goal")
+            {
+                goal = new EternalGoal(_goalParts[1], _goalParts[2], int.Parse(_goalParts[3]), bool.Parse(_goalParts[4]));
+            }
+
+            else if (_goalType == "Checklist Goal")
+            {
+                goal = new ChecklistGoal(_goalParts[1], _goalParts[2], int.Parse(_goalParts[3]), bool.Parse(_goalParts[4]), int.Parse(_goalParts[7]),int.Parse(_goalParts[6]), int.Parse(_goalParts[7]));
+                
+            }
+
+            else
+            //if the line does not contain a real goal type then it must be  the total points
+            {
+                _totalPoints = int.Parse(_goalType);
+            }
             
             //make sure the goal exists and the list does not already contain the goal
             if (goal != null && _goalsList.Contains(goal) == false)
@@ -115,4 +136,14 @@ class DealingWithGoals
 
     }
 
+    private void Congratulations()
+    {
+        if (_totalPoints > 50)
+        {
+            pet.Doggy();
+        }
+
+    }
+
+    
 }
