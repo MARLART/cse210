@@ -7,13 +7,13 @@ class Program
     {
         string _menuOption = "0";
         Console.Clear();
-        DealingWithGoals deal = new DealingWithGoals();
-
+        //DealingWithGoals deal = new DealingWithGoals();
+        Menu menu1 = new Menu();
         do
         {            
-            //Display the menu
-            Menu menu1 = new Menu();
-            DealingWithGoals dealGoal = new DealingWithGoals();
+            menu1.DisplayMenu();
+            
+            //DealingWithGoals dealGoal = new DealingWithGoals();
       
             //Display the menu response
             _menuOption = Console.ReadLine();

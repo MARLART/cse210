@@ -26,10 +26,10 @@ class Menu
     private int _total = DealingWithGoals._totalPoints;
     public Menu()
     {
-        DisplayMenu();    
+        //DisplayMenu();    
     }
 
-    private void DisplayMenu()
+    public void DisplayMenu()
     {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(_menuWelcome);
