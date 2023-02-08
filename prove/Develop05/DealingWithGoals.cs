@@ -84,7 +84,7 @@ class DealingWithGoals
     public string GoalFile()
     {
         Console.Write("What is the file name for your goals file? ");
-        return Directory.GetCurrentDirectory() + "\\files\\" + Console.ReadLine();
+        return Directory.GetCurrentDirectory() + Console.ReadLine();
     }
 
     public void LoadGoals()
