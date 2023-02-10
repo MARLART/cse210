@@ -3,7 +3,7 @@ using System;
 class Save : Compounder
 {
 
-    private double _payment, _openBal, _term;
+    private double _payment, _openBal;
     public Save(double rate, double payment, double openBal) : base(rate)
     {
         _payment = payment;
