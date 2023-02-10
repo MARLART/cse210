@@ -22,6 +22,7 @@ class Program
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("What decision do you need help with?  ");
+            Console.ForegroundColor = ConsoleColor.Gray;
             _choice = Console.ReadLine(); 
 
             if(_choice == "1")

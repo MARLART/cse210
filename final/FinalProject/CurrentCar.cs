@@ -3,9 +3,14 @@ using System;
 class CurrentCar : Vehicle
 {
 
-    public CurrentCar() 
+    public CurrentCar(double repairs) 
     {
         
+    }
+
+    public override double CalcPrice()
+    {
+        return 0;
     }
 
 

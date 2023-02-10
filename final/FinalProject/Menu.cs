@@ -14,7 +14,7 @@ class Menu
         Compounder bank = new BankLoan(1,1,1);
         Compounder deal = new DealersLoan(1,1,1);
 
-        Vehicle current = new CurrentCar();
+        Vehicle current = new CurrentCar(1);
         
         Console.WriteLine("");
         Console.WriteLine("1.Electric / Hybrid");
@@ -26,16 +26,16 @@ class Menu
 
         if (_carType == "1")
         {
-            Vehicle enviro = new EnviroCar();
+            Vehicle enviro = new EnviroCar(1,false,1,1,1);
         }
         else if (_carType == "2")
         {
-            Vehicle small = new SmallMedCar();
+            Vehicle small = new SmallMedCar(1,false,1,1);
         }
 
         else if (_carType == "3")
         {
-            Vehicle large = new LargeCar();
+            Vehicle large = new LargeCar(1,false,1,1,1);
         }
     }
 
@@ -71,18 +71,20 @@ class Menu
 
         string _carType = Console.ReadLine();
 
+        Vehicle enviro = new EnviroCar(1,false,1,1,1);
+
         if (_carType == "1")
         {
-            Vehicle current = new CurrentCar();
+            Vehicle current = new CurrentCar(1);
         }
         else if (_carType == "2")
         {
-            Vehicle small = new SmallMedCar();
+            Vehicle small = new SmallMedCar(1,false,1,1);
         }
 
         else if (_carType == "3")
         {
-            Vehicle large = new LargeCar();
+            Vehicle large = new LargeCar(1,false,1,1,1);
         }
     }
 
@@ -92,10 +94,10 @@ class Menu
         Compounder bank = new BankLoan(1,1,1);
         Compounder deal = new DealersLoan(1,1,1);
 
-        Vehicle current = new CurrentCar();
-        Vehicle enviro = new EnviroCar();
-        Vehicle small = new SmallMedCar();
-        Vehicle large = new LargeCar();
+        Vehicle current = new CurrentCar(1);
+        Vehicle enviro = new EnviroCar(1,false,1,1,1);
+        Vehicle small = new SmallMedCar(1,false,1,1);
+        Vehicle large = new LargeCar(1,false,1,1,1);
     }
 
 
