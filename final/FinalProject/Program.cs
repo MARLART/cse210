@@ -7,10 +7,11 @@ class Program
     static void Main(string[] args)
     {
         string _choice = "0";
+        Menu menu = new Menu();
 
         while (_choice != "4")
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("* Should I buy that Car? *");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -19,9 +20,25 @@ class Program
             Console.WriteLine("3. Compare all finance and a car options");
             Console.WriteLine("4. QUIT");
             Console.WriteLine("");
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("What decision do you need help with?  ");     
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("What decision do you need help with?  ");
+            _choice = Console.ReadLine(); 
+
+            if(_choice == "1")
+            {
+                menu.MenuBuySave();
+            } 
+            else if (_choice == "2")
+            {
+                menu.MenuElecPetrol();
+            } 
+            else if (_choice == "3")
+            {
+                menu.MenuCompareAll();
+            }
         }
+
+        Console.WriteLine("Thank you Goodbye");
         
     }
 }
