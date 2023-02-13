@@ -8,7 +8,7 @@ class CurrentCar : Vehicle
         
     }
 
-    public override double CalcPrice()
+    public override double GetCarCost()
     {
         return 0;
     }

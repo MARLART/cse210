@@ -14,7 +14,7 @@ public abstract class Compounder
         return _interestRate;
     }
 
-    public abstract double FinalBalance();
+    public abstract double TotalCost();
 
 
 

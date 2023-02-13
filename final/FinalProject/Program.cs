@@ -8,6 +8,7 @@ class Program
     {
         string _choice = "0";
         Menu menu = new Menu();
+        Console.Clear();
 
         while (_choice != "4")
         {

@@ -10,7 +10,7 @@ class Save : Compounder
         _openBal = openBal;
     }
 
-    public override double FinalBalance()
+    public override double TotalCost()
     {
         return 42;
     }

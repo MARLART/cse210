@@ -2,14 +2,20 @@ using System;
 
 class Calculations
 {
-    private double _yearlyFuel, _yearlyTotal;
-
-    
-
+    private double _yearlyFuel, _yearlyTotal, _loanPayment, _monthlyRate;
 
     public Calculations()
     {
         
+    }
+
+    public double CalcRepayments(double rate, double cost, double months)
+    {
+        _monthlyRate = rate/12;
+        //remove deposit amount
+        _loanPayment = (_monthlyRate*cost)/(1-Math.Pow((1+_monthlyRate), (-months)));
+        
+        return _loanPayment;
     }
 
     public double YearlyFuel(double weeklyFuel )
@@ -25,11 +31,6 @@ class Calculations
         _yearlyTotal = YearlyFuel(weeklyFuel) + service + insurance;
 
         return _yearlyTotal;
-    }
-
-    public double CalcRepayments()
-    {
-        return 42;
     }
 
     public double CalcTimeSave()

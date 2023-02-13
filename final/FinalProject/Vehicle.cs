@@ -4,6 +4,7 @@ public abstract class Vehicle
 {
 
     private double _price, _discount, _tradein, _purchasePrice, _diesel;
+   
     private bool _isDiesel;
     public Vehicle(double price, bool diesel, double discount, double tradein)
     {
@@ -18,23 +19,18 @@ public abstract class Vehicle
         //current vehicle only
     }
 
-    public virtual double CalcPrice()
+    public virtual double GetCarCost()
     {
-        if (_isDiesel == true)
+        if (_isDiesel == false)
         {
-            _diesel = 1000;
+            _purchasePrice = _price - _discount - _tradein;
         }
-        else
+        else 
         {
-            _diesel = 0;
+            _purchasePrice = _price - _discount - _tradein + _diesel;
         }
-
-        _purchasePrice = _price - _discount - _tradein + _diesel;
+      
         return _purchasePrice;
     }
-
-
-
-
 
 }
