@@ -2,18 +2,19 @@ using System;
 
 class Calculations
 {
-    private double _yearlyFuel, _yearlyTotal, _loanPayment, _monthlyRate;
+    private double _yearlyFuel, _yearlyTotal, _loanPayment, _monthlyRate, _loanAmount;
 
     public Calculations()
     {
         
     }
 
-    public double CalcRepayments(double rate, double cost, double months)
+    public double CalcRepayments(double rate, double cost, double months, double deposit)
     {
         _monthlyRate = rate/12;
+        _loanAmount = cost - deposit;
         //remove deposit amount
-        _loanPayment = (_monthlyRate*cost)/(1-Math.Pow((1+_monthlyRate), (-months)));
+        _loanPayment = (_monthlyRate*_loanAmount)/(1-Math.Pow((1+_monthlyRate), (-months)));
         
         return _loanPayment;
     }

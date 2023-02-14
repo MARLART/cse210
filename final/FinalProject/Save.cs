@@ -3,11 +3,11 @@ using System;
 class Save : Compounder
 {
 
-    private double _payment, _openBal;
-    public Save(double rate, double payment, double openBal) : base(rate)
+    private double _payment;
+    public Save(double rate, double payment, double deposit) : base(rate, deposit)
     {
         _payment = payment;
-        _openBal = openBal;
+       
     }
 
     public override double TotalCost()

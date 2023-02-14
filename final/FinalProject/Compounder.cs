@@ -3,10 +3,11 @@ using System;
 public abstract class Compounder
 {
 
-    private double _interestRate;
-    public Compounder(double rate)
+    public double _interestRate, _deposit;
+    public Compounder(double rate, double deposit)
     {
         _interestRate = rate;
+        _deposit = deposit;
     }
 
     public double GetInterestRate()

@@ -5,7 +5,7 @@ class CarLoan : Compounder
     private double _setupFee, _termMonths, _payments, _totalPaid, _costCar, _interestRate;
     Calculations loanCalc = new Calculations();
 
-    public CarLoan(double rate, double setup, double term, double carCost ) : base (rate)
+    public CarLoan(double rate, double setup, double term, double carCost, double deposit ) : base (rate, deposit)
     {
         _setupFee = setup;
         _termMonths = term;
@@ -16,7 +16,7 @@ class CarLoan : Compounder
 
     public override double TotalCost()
     {
-        _payments = loanCalc.CalcRepayments(_interestRate, _costCar, _termMonths);
+        _payments = loanCalc.CalcRepayments(_interestRate, _costCar, _termMonths, _deposit);
 
         _totalPaid = _payments * _termMonths;
 

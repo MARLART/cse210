@@ -97,7 +97,7 @@ class Menu
         }
 
         Compounder save = new Save(_rateSave, _saveAmount, _deposit);
-        Compounder loan = new CarLoan(_rateloan,_feeloan,_termMonths, _carCost); 
+        Compounder loan = new CarLoan(_rateloan,_feeloan,_termMonths, _carCost, _deposit); 
 
         Console.WriteLine(loan.TotalCost());
 
@@ -119,7 +119,7 @@ class Menu
         }
         else if (_finance == "2")
         {
-            Compounder loan = new CarLoan(_rateloan,_feeloan,_termMonths, _carCost);
+            Compounder loan = new CarLoan(_rateloan,_feeloan,_termMonths, _carCost, _deposit);
         }
 
 
@@ -151,7 +151,7 @@ class Menu
     public void MenuCompareAll()
     {
         Compounder save = new Save(_rateSave, _saveAmount, _deposit);
-        Compounder loan = new CarLoan(_rateloan,_feeloan,_termMonths, _carCost);
+        Compounder loan = new CarLoan(_rateloan,_feeloan,_termMonths, _carCost, _deposit);
 
         Vehicle current = new CurrentCar(1);
         Vehicle enviro = new EnviroCar(_carCost,_diesel,_carDiscount,_tradein,_cleanCarDisc);
