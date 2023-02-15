@@ -3,7 +3,7 @@ using System;
 class SmallMedCar: Vehicle
 {
 
-    public SmallMedCar(double price, bool diesel, double discount, double tradein) : base (price, diesel, discount, tradein)
+    public SmallMedCar(double price, double discount, double tradein) : base (price, discount, tradein)
     {
         
     }
