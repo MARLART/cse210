@@ -23,4 +23,4 @@ There are other factors that cannot be quantified as numbers that are also impor
 
 2. Will buying an electric or hybrid car save me money?
     This program compares the yearly costs of owning both cars - it does not include depreciation 
-    It looks at differences in petrol, insurance and repair costs. It also looks at repayments and / or interest lost because you have less money in your savings account.
+    It looks at differences in petrol, insurance and repair costs. It also looks at loan repayments and / or interest lost because you have less money in your savings account.
