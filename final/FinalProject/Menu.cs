@@ -84,14 +84,7 @@ class Menu
         CarQuestions();
         Vehicle ecar = new EnviroCar(_price, _carDiscount, _tradein, _cleanCarDisc);
         
-
-        Console.WriteLine("How will you finance your purchase?  ");
-        Console.WriteLine("1. Savings for the full amount");
-        Console.WriteLine("2. Loan for the full amount");
-        Console.WriteLine("2. Deposit from savings and Loan for the rest");
-        
-
-        _finance = Console.ReadLine();
+        FinanceQuestions();
 
         if (_finance == "1")
         {
@@ -115,76 +108,13 @@ class Menu
             _carCost = ecar.GetCarCost(_deposit);
         }
 
-
-
         Console.WriteLine("How many kilometers do you normally drive in a year?");
         _km = double.Parse(Console.ReadLine());
-
-        Console.WriteLine("");
-        Console.WriteLine("Current Car Questions");
-        Console.WriteLine("How many litres per 100km does your current car use? ");
-        _cLitres = double.Parse(Console.ReadLine());
-        Console.WriteLine("What are your yearly servicing and repair costs?");
-        _cService = double.Parse(Console.ReadLine());
-        Console.Write("What are your yearly insurance costs? ");
-        _cInsure = double.Parse(Console.ReadLine());
-
-        Calculations cCalc = new Calculations();
-        _cFuelTotal  =  cCalc.YearlyFuel(_km, _cLitres);
-
-        if (_finance == "1")
-        {
-            _lostInterest = cCalc.CalcYearInterest(_carCost, _rateSave);
-        }
-        else if (_finance == "3")
-        {
-            _lostInterest = cCalc.CalcYearInterest(_deposit, _rateSave);
-        }
-        _cYearlyTotal =  cCalc.YearlyTotal(_cService, _cInsure, _km, _cLitres) + _lostInterest;
-
-        Console.WriteLine("");
-        Console.WriteLine("Evironmental Car Questions");
-        Console.WriteLine("How many litres per 100km will the new car use? ");
-        _eLitres = double.Parse(Console.ReadLine());
-        Console.WriteLine("What will the yearly servicing and repair costs be?");
-        _eService = double.Parse(Console.ReadLine());
-        Console.Write("What will your yearly insurance costs be? ");
-        _eInsure = double.Parse(Console.ReadLine());
-
-        Calculations eCalc = new Calculations();
-        _repayments = eCalc.CalcRepayments(_rateloan, _carCost, _termMonths);
-        _yearlyRepayments = _repayments * 12;
-        _loanInterest = _yearlyRepayments + _lostInterest;
-        _eFuelTotal  =  eCalc.YearlyFuel(_km, _eLitres);
-
-        //calculate total cost for e car based on financing option
-        if (_finance == "1")
-        {
-            _eYearlyTotal =  eCalc.YearlyTotal(_eService, _eInsure, _km, _eLitres) + _lostInterest;
-        }
-        else if (_finance == "2")
-        {
-            _eYearlyTotal =  eCalc.YearlyTotal(_eService, _eInsure, _km, _eLitres) + _yearlyRepayments;
-        }
-        else
-        {
-            _eYearlyTotal =  eCalc.YearlyTotal(_eService, _eInsure, _km, _eLitres) + _loanInterest;
-        }
-        
-
+    
+        CurrentCarQuestions();
+        ECarQuestions();           
         NumbersToString();
         DisplayPetrolElec();
-    }
-
-    public void MenuCompareAll()
-    {
-        Compounder save = new Save(_rateSave, _saveAmount, _deposit, _futureCarCost, _repairs);
-        Compounder loan = new CarLoan(_rateloan,_feeloan,_termMonths, _carCost, _deposit);
-
-        //Vehicle current = new CurrentCar(1);
-        Vehicle enviro = new EnviroCar(_price,_carDiscount,_tradein,_cleanCarDisc);
-        Vehicle small = new SmallMedCar(_price,_carDiscount,_tradein);
-        Vehicle large = new LargeCar(_price,_carDiscount,_tradein);
     }
 
     public void DisplayCarCost()
@@ -237,6 +167,49 @@ class Menu
 
     }
 
+    public void FinanceQuestions()
+    {
+        Console.WriteLine("How will you finance your purchase?  ");
+        Console.WriteLine("1. Savings for the full amount");
+        Console.WriteLine("2. Loan for the full amount");
+        Console.WriteLine("3. Deposit from savings and Loan for the rest");
+        _finance = Console.ReadLine();
+    } 
+
+    public void ECarQuestions()
+    {
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("Evironmental Car Questions");
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.WriteLine("How many litres per 100km will the new car use? ");
+        _eLitres = double.Parse(Console.ReadLine());
+        Console.WriteLine("What will the yearly servicing and repair costs be?");
+        _eService = double.Parse(Console.ReadLine());
+        Console.WriteLine("What will your yearly insurance costs be? ");
+        _eInsure = double.Parse(Console.ReadLine());
+
+        Calculations eCalc = new Calculations();
+        _repayments = eCalc.CalcRepayments(_rateloan, _carCost, _termMonths);
+        _yearlyRepayments = _repayments * 12;
+        _loanInterest = _yearlyRepayments + _lostInterest;
+        _eFuelTotal  =  eCalc.YearlyFuel(_km, _eLitres);
+
+         //calculate total cost for e car based on financing option
+        if (_finance == "1")
+        {
+            _eYearlyTotal =  eCalc.YearlyTotal(_eService, _eInsure, _km, _eLitres) + _lostInterest;
+        }
+        else if (_finance == "2")
+        {
+            _eYearlyTotal =  eCalc.YearlyTotal(_eService, _eInsure, _km, _eLitres) + _yearlyRepayments;
+        }
+        else
+        {
+            _eYearlyTotal =  eCalc.YearlyTotal(_eService, _eInsure, _km, _eLitres) + _loanInterest;
+        }
+    }
+
     public void CarQuestions()
     {
         Console.WriteLine("What is the standard price of this car?");
@@ -248,33 +221,37 @@ class Menu
     }
 
     public void DisplayPetrolElec()
-    {
+    {   
+        Console.Clear();
+
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine("Lets compare the costs for 1 year between your current car and a  new electric/hybrid car.");
+        Console.WriteLine("Compare the Yearly Costs");
         Console.WriteLine("");
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("               Current      New");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("               Current Car     New Electric / Hybrid");
         Console.ForegroundColor = ConsoleColor.Gray;
-        Console.WriteLine(string.Format("Fuel Cost:     {0}         {1}", _sCFuelTotal, _sEFuelTotal));
-        Console.WriteLine(string.Format("Servicing:     {0}          {1}", _cService, _eService));
-        Console.WriteLine(string.Format("Insurance:     {0}          {1}", _cInsure, _eInsure));
+        Console.WriteLine(string.Format("Fuel Cost:     {0}           {1}", _sCFuelTotal, _sEFuelTotal));
+        Console.WriteLine(string.Format("Servicing:     {0}             {1}", _cService, _eService));
+        Console.WriteLine(string.Format("Insurance:     {0}             {1}", _cInsure, _eInsure));
 
         if ( _finance == "1")
         {
-            Console.WriteLine(string.Format("Lost interest:  0           {0}", _sLostInterest));
+            Console.WriteLine(string.Format("Lost interest:  0            {0}", _sLostInterest));
         }
         else if (_finance == "2")
         {
-            Console.WriteLine(string.Format("Loan repayments: 0           {0}", _sYearlyRepayments));
+            Console.WriteLine(string.Format("Loan repayments: 0            {0}", _sYearlyRepayments));
         }
         else
         {
-            Console.WriteLine(string.Format("Loan & Interest: 0           {0}", _sLoanInterest));
+            Console.WriteLine(string.Format("Loan & Interest: 0            {0}", _sLoanInterest));
         }
 
-        Console.WriteLine(string.Format("               ------------------"));
-        Console.WriteLine(string.Format("Year Cost:     {0}           {1}", _sCYearlyTotal , _sEYearlyTotal));
+        Console.WriteLine(string.Format("               --------------------------"));
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine(string.Format("Year Cost:     {0}          {1}", _sCYearlyTotal , _sEYearlyTotal));
         Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.Gray;
     }
 
     private void NumbersToString()
@@ -286,6 +263,33 @@ class Menu
         _sYearlyRepayments = String.Format("{0:0}", _yearlyRepayments);
         _sCYearlyTotal = String.Format("{0:0}", _cYearlyTotal);
         _sEYearlyTotal = String.Format("{0:0}", _eYearlyTotal);
+    }
+
+    private void CurrentCarQuestions()
+    {
+        Console.WriteLine("");
+        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine("Current Car Questions");
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.WriteLine("How many litres per 100km does your current car use? ");
+        _cLitres = double.Parse(Console.ReadLine());
+        Console.WriteLine("What are your yearly servicing and repair costs?");
+        _cService = double.Parse(Console.ReadLine());
+        Console.WriteLine("What are your yearly insurance costs? ");
+        _cInsure = double.Parse(Console.ReadLine());
+
+        Calculations cCalc = new Calculations();
+        _cFuelTotal  =  cCalc.YearlyFuel(_km, _cLitres);
+
+        if (_finance == "1")
+        {
+            _lostInterest = cCalc.CalcYearInterest(_carCost, _rateSave);
+        }
+        else if (_finance == "3")
+        {
+            _lostInterest = cCalc.CalcYearInterest(_deposit, _rateSave);
+        }
+        _cYearlyTotal =  cCalc.YearlyTotal(_cService, _cInsure, _km, _cLitres) + _lostInterest;
     }
 
 

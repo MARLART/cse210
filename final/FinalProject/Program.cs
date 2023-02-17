@@ -10,7 +10,7 @@ class Program
         Menu menu = new Menu();
         Console.Clear();
 
-        while (_choice != "4")
+        while (_choice != "3")
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("* Should I buy that Car? *");
@@ -18,8 +18,7 @@ class Program
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("1. Do I buy the car now with a loan while it is discounted or continue to save?"); 
             Console.WriteLine("2. Will the electric / hybrid car save me money?");
-            Console.WriteLine("3. Compare all finance and a car options");
-            Console.WriteLine("4. QUIT");
+            Console.WriteLine("3. QUIT");
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("What decision do you need help with?  ");
@@ -34,10 +33,6 @@ class Program
             {
                 menu.MenuElecPetrol();
             } 
-            else if (_choice == "3")
-            {
-                menu.MenuCompareAll();
-            }
         }
 
         Console.WriteLine("Thank you Goodbye");
