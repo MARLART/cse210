@@ -2,7 +2,7 @@ using System;
 
 class CarLoan : Compounder
 {
-    private double _setupFee, _termMonths, _payments, _totalPaid, _costCar, _interestRate, _totalInterest, _outOfPocket;
+    private double _setupFee, _termMonths, _payments, _totalPaid, _costCar, _intRate, _totalInterest, _outOfPocket;
     private string _sTotalPaid, _sPayments, _sTotalInterest;
     Calculations loanCalc = new Calculations();
 
@@ -11,13 +11,13 @@ class CarLoan : Compounder
         _setupFee = setup;
         _termMonths = term;
         _costCar = carCost;
-        _interestRate = rate;
+        _intRate = rate;
 
     }
 
     public override void DisplayTotalCost()
     {
-        _payments = loanCalc.CalcRepayments(_interestRate, _costCar, _termMonths, _deposit);
+        _payments = loanCalc.CalcRepayments(_intRate, _costCar, _termMonths);
         _totalPaid = (_payments * _termMonths);
         _totalInterest = _totalPaid - _costCar;
         _outOfPocket = _totalPaid + _deposit;

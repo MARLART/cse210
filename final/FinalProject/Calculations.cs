@@ -2,7 +2,8 @@ using System;
 
 class Calculations
 {
-    private double _yearlyFuel, _yearlyTotal, _loanPayment, _monthlyRate, _loanAmount, _totalInterest, _timeToSave, _saveGoal, _interest, _totalPayments, _outOfPocket, _repairs;
+    private double _yearlyFuel, _yearlyTotal, _loanPayment, _monthlyRate, _loanAmount, _totalInterest, _timeToSave, _saveGoal, _interest, _totalPayments, _yearInterest, _principle;
+    private double _pricePerLitre = 2.40;
     
 
     public Calculations()
@@ -10,28 +11,29 @@ class Calculations
         
     }
 
-    public double CalcRepayments(double rate, double cost, double months, double deposit)
+    public double CalcRepayments(double rate, double cost, double months)
     {
         _monthlyRate = rate/12;
 
-        _loanAmount = cost - deposit;
-        //remove deposit amount
+        _loanAmount = cost;
+       
         _loanPayment = (_monthlyRate*_loanAmount)/(1-Math.Pow((1+_monthlyRate), (-months)));
                         
         return _loanPayment;
     }
 
-    public double YearlyFuel(double weeklyFuel )
+    public double YearlyFuel(double kilometers , double litres)
     {
-        _yearlyFuel = weeklyFuel * 52;
+        _yearlyFuel = (kilometers/100) * litres * _pricePerLitre;
 
         return _yearlyFuel;
     }
 
-    public double YearlyTotal(double service, double insurance, double weeklyFuel)
+    public double YearlyTotal(double service, double insurance, double kilometers, double litres )
     {
         
-        _yearlyTotal = YearlyFuel(weeklyFuel) + service + insurance;
+        
+        _yearlyTotal = YearlyFuel(kilometers, litres) + service + insurance;
 
         return _yearlyTotal;
     }
@@ -55,15 +57,20 @@ class Calculations
         return _timeToSave;
     }
 
-    public void DisplayCarCompare()
+    public double CalcYearInterest(double amount, double rate)
     {
+        _monthlyRate = rate/12;
+        _principle = amount;
 
+        for (int months=0; months<12; months++)
+        {
+            _interest = _principle * _monthlyRate;
+            _principle += _interest;
+            _yearInterest += _interest;
+        }
+        return _yearInterest;
     }
 
-    public void DisplayFinanceCompare()
-    {
-        
-    }
 
 
 }
